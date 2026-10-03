@@ -7,7 +7,6 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +17,7 @@ import org.jspecify.annotations.Nullable;
 
 public class DogMenu extends AbstractContainerMenu
 {
-    private static final int DOG_SLOTS = 2;
+    private static final int DOG_SLOTS = 1;
     private static final int PLAYER_SLOTS_END = DOG_SLOTS + 36;
 
     @Nullable
@@ -39,7 +38,7 @@ public class DogMenu extends AbstractContainerMenu
                 ? new DogContainer(wolf)
                 :new SimpleContainer(DOG_SLOTS);
 
-        addSlot(new Slot(dogSlots, 1, 8, 36)
+        addSlot(new Slot(dogSlots, 0, 8, 36)
         {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
@@ -115,12 +114,12 @@ public class DogMenu extends AbstractContainerMenu
 
         @Override
         public boolean isEmpty() {
-            return getItem(0).isEmpty() && getItem(1).isEmpty();
+            return getItem(0).isEmpty();
         }
 
         @Override
         public ItemStack getItem(int i) {
-            return i == 0 ? wolf.getItemBySlot(EquipmentSlot.BODY) : wolf.getData(ModAttachments.TOTEM_SLOT);
+            return wolf.getData(ModAttachments.TOTEM_SLOT);
         }
 
         @Override
@@ -141,8 +140,7 @@ public class DogMenu extends AbstractContainerMenu
 
         @Override
         public void setItem(int slot, ItemStack stack) {
-            if (slot == 0) wolf.setItemSlot(EquipmentSlot.BODY, stack);
-            else wolf.setData(ModAttachments.TOTEM_SLOT, stack);
+            wolf.setData(ModAttachments.TOTEM_SLOT, stack);
         }
 
         @Override
@@ -158,7 +156,6 @@ public class DogMenu extends AbstractContainerMenu
         @Override
         public void clearContent() {
             setItem(0, ItemStack.EMPTY);
-            setItem(1, ItemStack.EMPTY);
         }
     }
 }
