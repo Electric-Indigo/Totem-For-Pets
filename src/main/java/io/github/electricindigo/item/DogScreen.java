@@ -21,7 +21,7 @@ public class DogScreen extends AbstractContainerScreen<DogMenu>
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, leftPos, topPos, 0, 0, imageWidth, imageHeight, 256, 256);
 
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, leftPos + 7, topPos + 17, 18, 18);
+        //graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, leftPos + 7, topPos + 17, 18, 18);
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, leftPos + 7, topPos + 35, 18, 18);
 
         if (menu.getWolf() != null)

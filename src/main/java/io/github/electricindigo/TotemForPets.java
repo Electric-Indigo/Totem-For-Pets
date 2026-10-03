@@ -18,7 +18,6 @@ public class TotemForPets {
         ModItems.register(modEventBus);
         ModAttachments.register(modEventBus);
         ModMenuTypes.register(modEventBus);
-        NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
 

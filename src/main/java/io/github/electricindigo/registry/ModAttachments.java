@@ -18,6 +18,7 @@ public class ModAttachments
     public static final Supplier<AttachmentType<ItemStack>> TOTEM_SLOT =
             ATTACHMENT_TYPES.register("totem_slot", () -> AttachmentType.builder(() -> ItemStack.EMPTY)
                     .serialize(ItemStack.OPTIONAL_CODEC.fieldOf("item"))
+                    .sync(ItemStack.OPTIONAL_STREAM_CODEC)
                     .build());
 
     public static void register(IEventBus mobEventBus)
